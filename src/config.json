@@ -1,0 +1,14 @@
+{
+	"lose_score": 7,
+	"debug": true,
+	"refresh_commands": true,
+	"debug_guild_id": "940318064724049980",
+	"score_graph_width": 28,
+	"score_graph_char": "▇",
+	"leaderboard_length": 9,
+	"wordle_path": "/../data/wordles.json",
+	"debug_path": "/../data/wordles.debug.json",
+	"homeguilds_path": "src/data/channels.json",
+	"users_path": "src/data/users.json",
+	"log_path": "src/log/wordlebot.log"
+}
