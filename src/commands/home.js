@@ -1,21 +1,23 @@
 const { MessageEmbed, Permissions } = require('discord.js');
-const { setChannel } = require('../util/homeguilds');
+const { setHomeChannel } = require('../util/guilds');
 const content = require('../util/content');
 
 module.exports = async (interaction) => {
     const permissions = interaction.memberPermissions
     if (!permissions.has(Permissions.FLAGS.MANAGE_CHANNELS)) {
+        const { title, body } = content.insufficientpermissions;
         const embed = new MessageEmbed()
-            .setTitle(content.insufficientpermissions.title)
-            .setDescription(content.insufficientpermissions.body);
+            .setTitle(title)
+            .setDescription(body);
         await interaction.reply({ embeds: [embed] });
         return;
     }
-    setChannel(interaction.guildId, interaction.channelId);
+    setHomeChannel(interaction.guildId, interaction.channelId);
 
+    const { title, body } = content.home;
     const embed = new MessageEmbed()
-        .setTitle(content.home.title)
-        .setDescription(content.home.body);
+        .setTitle(title)
+        .setDescription(body);
 
     await interaction.reply({ embeds: [embed] });
 }
