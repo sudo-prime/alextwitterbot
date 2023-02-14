@@ -1,3 +1,7 @@
+/* content.js
+    Message-based content is kept here for organizational purposes.
+*/
+
 module.exports = {
     info: {
         description: 'BoilerplateBot info:',

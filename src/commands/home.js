@@ -1,3 +1,8 @@
+/* home.js
+    Implements the home command. This sets a particular channel in a guild as the "home" channel.
+    This channel can be used to designate a specific location for the bot to operate in.
+*/
+
 const { MessageEmbed, Permissions } = require('discord.js');
 const { setHomeChannel } = require('../util/guilds');
 const content = require('../util/content');

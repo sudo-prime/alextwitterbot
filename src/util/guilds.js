@@ -1,3 +1,7 @@
+/* guilds.js
+    Implements several helpful serialization methods related to discord guilds.
+*/
+
 const { getContext, setContextSlice } = require('./context');
 
 const setHomeChannel = (guildId, channelId) => {

@@ -1,3 +1,7 @@
+/* bot.js
+    The main bot script. Logs in with a token, then listens for interactions.
+*/
+
 require('dotenv').config()
 
 const { Client } = require('discord.js');

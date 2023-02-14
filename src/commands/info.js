@@ -1,3 +1,7 @@
+/* info.js
+    Implements the info command, which replies with a message containing details about the bot.
+*/
+
 const { MessageEmbed } = require('discord.js');
 const content = require('../util/content');
 

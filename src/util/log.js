@@ -1,4 +1,6 @@
-
+/* log.js
+    Simple logging util. Utilizes simple-node-logger dependency.
+*/
 const config = require('../config.json');
 const log = require('simple-node-logger')
     .createSimpleFileLogger(__dirname + config.log_path);

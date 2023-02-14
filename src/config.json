@@ -1,8 +1,7 @@
-{
+{	
 	"debug": true,
 	"refresh_commands": true,
-	"context_path": "/../data/context.json",
-	"debug_path": "/../data/context.debug.json",
-	"log_path": "/../log/bot.log",
-	"est_tz_offset": -5
+	"context_path": "/../context/context.json",
+	"debug_path": "/../context/context.debug.json",
+	"log_path": "/../log/bot.log"
 }
