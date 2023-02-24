@@ -13,15 +13,19 @@ const log = require('./log');
 const getContext = () => {
     const filePath = config.debug ? config.debug_path : config.context_path;
     const fullPath = path.resolve(__dirname + filePath);
-    try {
-        const file = fs.readFileSync(fullPath);
-        return JSON.parse(file);
-    } catch (readError) {
-        if (readError.code !== 'ENOENT') {
-            throw readError;
+    const folderPath = path.resolve(__dirname + filePath + '/..');
+    if(!fs.existsSync(folderPath)) {
+        log.info("No context folder was found. Creating one...");
+        try {
+            fs.mkdirSync(folderPath);
+        } catch (error) {
+            console.error("An error was encountered while creating the context folder");
+            throw error;
         }
+    }
+    if(!fs.existsSync(fullPath)) {
         log.info("No context file was found.");
-        fs.appendFileSync(__dirname + filePath, '{}', function (writeError) {
+        fs.appendFileSync(fullPath, '{}', function (writeError) {
             if (writeError) {
                 log.error("There was a problem creating the context file.");
                 log.error(writeError);
@@ -30,6 +34,14 @@ const getContext = () => {
         });
         log.info(`A new context file was created at ${fullPath}.`);
         return {};
+    }
+    try {
+        const file = fs.readFileSync(fullPath);
+        return JSON.parse(file);
+    } catch (readError) {
+        log.error(`An error was encountered reading the context file at ${fullPath}`);
+        log.error(readError);
+        throw readError;
     }
 }
 

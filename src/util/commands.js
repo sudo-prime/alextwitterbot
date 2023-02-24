@@ -47,7 +47,13 @@ COMMANDS_JSON = [
 
 const refreshCommandsIfNeeded = async (token, client) => {
     if (!config.refresh_commands) return;
+    if (!process.env.DEBUG_GUILD) {
+        log.error(`The provided debug guild ID is invalid: ${process.env.DEBUG_GUILD}`);
+        log.error(`Please check the .env file and try again. Consult the README for more info about the debug guild ID.`);
+        return;
+    }
     log.info("Refreshing commands...");
+    
     const rest = new REST({ version: '9' }).setToken(token);
     const command = config.debug ? Routes.applicationGuildCommands : Routes.applicationCommands;
     const args = config.debug ? [client.user.id, process.env.DEBUG_GUILD] : [client.application.id];
