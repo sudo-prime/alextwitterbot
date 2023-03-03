@@ -22,7 +22,7 @@ module.exports.toOxfordComma = (array) => {
     } else if (array.length === 1) {
         return array[0].toString();
     }
-}
+};
 
 
 // Fisher-Yates shuffle algorithm
@@ -35,4 +35,33 @@ module.exports.shuffle = (a) => {
         a[j] = x;
     }
     return a;
+};
+
+// TODO: cleanup
+module.exports.nthString = (number) => {
+    const whatNumberIsIt = number.toString();
+
+    let ending;
+    let letters;
+    if (whatNumberIsIt.length >= 2) {
+        ending = whatNumberIsIt[whatNumberIsIt.length - 2] + whatNumberIsIt[whatNumberIsIt.length - 1]
+    } else {
+        ending = '0' + whatNumberIsIt;
+    }
+    
+    if (ending[0] === '1') {
+        letters = 'th';
+    } else {
+        if (ending[1] === '1') {
+            letters = 'st';
+        } else if (ending[1] === '2') {
+            letters = 'nd';
+        } else if (ending[1] === '3') {
+            letters = 'rd';
+        } else {
+            letters = 'th';
+        }
+    }
+
+    return whatNumberIsIt + letters;
 }

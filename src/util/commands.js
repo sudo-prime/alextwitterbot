@@ -10,39 +10,21 @@ const log = require('./log');
 const content = require('./content');
 const config = require('../config.json');
 
-const home = require("../commands/home");
-const info = require("../commands/info");
+const alextwitter = require("../commands/alextwitter");
 const notimplemented = require("../commands/notimplemented");
 
 require('dotenv').config()
 
 COMMANDS_MAPPING = {
-    'home': home,
-    'info': info,
+    'alextwitter': alextwitter,
+    '69thtweet': notimplemented,
 };
 
 COMMANDS_JSON = [
     new SlashCommandBuilder()
-        .setName('home')
-        .setDescription(content.home.description)
+        .setName('alextwitter')
+        .setDescription('Random funny tweet from our favorite funny man')
         .toJSON(),
-    new SlashCommandBuilder()
-        .setName('info')
-        .setDescription(content.info.description)
-        .toJSON(),
-    // Here's an example of a more complex command
-    // new SlashCommandBuilder()
-    //     .setName('top')
-    //     .setDescription(content.top.description)
-    //     .addStringOption(option =>
-    //         option.setName('stat')
-    //             .setDescription('Which stat to rank by')
-    //             .setRequired(false)
-    //             .addChoice('Guesses per Win', 'gperw')
-    //             .addChoice('Number of Wins', 'wins')
-    //             .addChoice('Games Played', 'numplayed')
-    //             .addChoice('Winrate', 'winrate'))
-    //     .toJSON(),
 ];
 
 const refreshCommandsIfNeeded = async (token, client) => {
@@ -72,7 +54,6 @@ const init = async (token, client) => {
 module.exports = {
     init,
     COMMANDS_MAPPING,
-    home, 
-    info,
+    alextwitter, 
     notimplemented
 }
